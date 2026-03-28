@@ -1,50 +1,476 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Layout from '../layouts/Layout.astro';
 ---
+<Layout title="Home">
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bolts" aria-hidden="true">
+      {Array.from({length: 30}).map((_, i) => (
+        <span class="bolt" style={`--i:${i}`}>⚡</span>
+      ))}
+    </div>
+    <div class="hero-content">
+      <span class="tag">All Natural &amp; Delicious</span>
+      <h1 class="hero-title">Peanut Butter<br/>That's Actually<br/><em>RAD.</em></h1>
+      <p class="hero-sub">No palm oil. No stir. No nonsense. Just the most delicious all-natural peanut butter you've ever tasted.</p>
+      <div class="hero-actions">
+        <a href="/products" class="btn btn-pink">Shop Now</a>
+        <a href="/about" class="btn btn-outline">Our Story</a>
+      </div>
+      <div class="hero-badges">
+        <span>🥜 All Natural</span>
+        <span>🌿 No Palm Oil</span>
+        <span>✋ No Stir</span>
+        <span>💥 No Junk</span>
+      </div>
+    </div>
+    <div class="hero-jar-wrap">
+      <div class="hero-jar-glow"></div>
+      <div class="hero-jar">
+        <div class="jar-body">
+          <div class="jar-label">
+            <div class="label-pattern"></div>
+            <div class="label-center">
+              <div class="label-ring">
+                <span>ALL NATURAL &amp; DELICIOUS</span>
+              </div>
+              <div class="label-logo">RAD</div>
+              <div class="label-sub">PEANUT BUTTER</div>
+            </div>
+            <div class="label-bottom">CREAMY</div>
+          </div>
+          <div class="jar-pb-fill"></div>
+        </div>
+        <div class="jar-lid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ── -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      {Array.from({length: 6}).map(() => (
+        <span>ALL NATURAL ⚡ NO PALM OIL ⚡ NO STIR ⚡ JUST RAD ⚡ CREAMY &amp; CRUNCHY ⚡ </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- ── WHY RAD ── -->
+  <section class="section why-rad">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Why We're Different</span>
+        <h2>What Makes RAD <em>RAD</em>?</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon" style="background: var(--pink)">🥜</div>
+          <h3>Only Real Ingredients</h3>
+          <p>Just peanuts and a pinch of sea salt. That's it. We don't hide behind labels — we wear them proudly.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon" style="background: var(--cyan)">🌿</div>
+          <h3>Zero Palm Oil</h3>
+          <p>Palm oil is the cheap shortcut. We don't take shortcuts. Our peanut butter is pure, full stop.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon" style="background: var(--yellow)">✋</div>
+          <h3>No-Stir Formula</h3>
+          <p>We figured out how to keep the natural oils perfectly blended — no mess, no separation, just creamy perfection every time.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon" style="background: var(--pb)">💥</div>
+          <h3>Outrageously Good</h3>
+          <p>It's not enough to be clean — RAD has to taste incredible. Roasted to perfection, every single jar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRODUCT TEASER ── -->
+  <section class="section products-teaser">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">The Lineup</span>
+        <h2>Pick Your RAD</h2>
+      </div>
+      <div class="teaser-grid">
+        <a href="/products#creamy" class="teaser-card" style="--accent: var(--pink)">
+          <div class="teaser-stripe"></div>
+          <div class="teaser-emoji">🫙</div>
+          <h3>Creamy</h3>
+          <p>Silky smooth. Classic. The one that started it all.</p>
+          <span class="teaser-cta">Shop Creamy →</span>
+        </a>
+        <a href="/products#crunchy" class="teaser-card" style="--accent: var(--cyan)">
+          <div class="teaser-stripe"></div>
+          <div class="teaser-emoji">🥜</div>
+          <h3>Crunchy</h3>
+          <p>Big peanut chunks. Bold texture. Seriously satisfying.</p>
+          <span class="teaser-cta">Shop Crunchy →</span>
+        </a>
+        <a href="/products#honey" class="teaser-card" style="--accent: var(--yellow)">
+          <div class="teaser-stripe"></div>
+          <div class="teaser-emoji">🍯</div>
+          <h3>Honey</h3>
+          <p>A touch of raw honey. Naturally sweet, naturally RAD.</p>
+          <span class="teaser-cta">Shop Honey →</span>
+        </a>
+      </div>
+      <div style="text-align:center; margin-top:3rem">
+        <a href="/products" class="btn btn-black">See All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BAND ── -->
+  <section class="cta-band">
+    <div class="cta-bolts" aria-hidden="true">⚡⚡⚡⚡⚡</div>
+    <h2>Ready to Go RAD?</h2>
+    <p>Join thousands of peanut butter lovers who ditched boring spreads for something actually worth opening the jar for.</p>
+    <a href="/products" class="btn btn-yellow">Shop Now</a>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    background: var(--black);
+    overflow: hidden;
+    padding: 4rem 2rem;
+    gap: 4rem;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    flex: 1;
+    max-width: 560px;
+    margin-left: calc((100vw - 1200px) / 2);
+    padding-left: 2rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  @media (max-width: 1200px) { .hero-content { margin-left: 0; } }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    line-height: 0.95;
+    color: var(--white);
+    margin: 1rem 0;
+    letter-spacing: 2px;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--pink);
+    -webkit-text-stroke: 2px var(--pink);
+  }
+  .hero-sub {
+    color: #ccc;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 440px;
+    margin-bottom: 2rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .btn-outline { color: var(--white); border-color: var(--white); }
+  .btn-outline:hover { background: var(--white); color: var(--black); }
+
+  .hero-badges {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .hero-badges span {
+    font-size: 0.8rem; font-weight: 700;
+    color: #888; letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Floating bolt background */
+  .hero-bolts {
+    position: absolute; inset: 0; pointer-events: none;
+    overflow: hidden;
+  }
+  .bolt {
+    position: absolute;
+    font-size: calc(1rem + var(--i, 0) * 0.3rem % 2rem);
+    opacity: 0.06;
+    animation: float calc(8s + var(--i, 0) * 0.7s) ease-in-out infinite alternate;
+    left: calc(var(--i, 0) * 3.5%);
+    top: calc(var(--i, 0) * 3.8% % 90%);
+    filter: hue-rotate(calc(var(--i, 0) * 20deg));
+  }
+
+  /* ── ILLUSTRATED JAR ── */
+  .hero-jar-wrap {
+    position: relative; z-index: 2;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-jar-glow {
+    position: absolute;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, var(--pink) 0%, transparent 70%);
+    opacity: 0.25;
+    border-radius: 50%;
+    animation: pulse 3s ease-in-out infinite alternate;
+  }
+  .hero-jar {
+    position: relative;
+    width: 220px;
+    animation: float2 4s ease-in-out infinite alternate;
+  }
+  .jar-lid {
+    width: 200px; height: 36px;
+    background: linear-gradient(180deg, #444, #222);
+    border-radius: 8px 8px 4px 4px;
+    margin: 0 auto;
+    border: 3px solid #555;
+    position: relative; z-index: 2;
+  }
+  .jar-body {
+    width: 220px; height: 280px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 50%);
+    border: 3px solid rgba(255,255,255,0.15);
+    border-radius: 12px 12px 24px 24px;
+    position: relative; overflow: hidden;
+    margin-top: -4px;
+  }
+  .jar-pb-fill {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, var(--pb) 0%, var(--pb-dark) 100%);
+    border-radius: 0 0 20px 20px;
+  }
+  .jar-label {
+    position: absolute;
+    top: 20px; left: 10px; right: 10px;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: space-between;
+  }
+  .label-pattern {
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(45deg, var(--pink) 0, var(--pink) 4px, transparent 4px, transparent 14px),
+      repeating-linear-gradient(-45deg, var(--cyan) 0, var(--cyan) 4px, transparent 4px, transparent 14px),
+      var(--yellow);
+    opacity: 0.9;
+  }
+  .label-center {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    align-items: center; margin-top: 24px;
+  }
+  .label-ring {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--black);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8px;
+  }
+  .label-ring span {
+    font-size: 7px; font-weight: 900;
+    letter-spacing: 1px; text-transform: uppercase; color: var(--black);
+  }
+  .label-logo {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: var(--pink);
+    -webkit-text-stroke: 1.5px var(--black);
+    line-height: 1;
+    margin-top: -28px;
+  }
+  .label-sub {
+    font-size: 7px; font-weight: 900;
+    letter-spacing: 2px; color: var(--black);
+  }
+  .label-bottom {
+    position: relative; z-index: 2;
+    background: var(--pink);
+    color: var(--yellow);
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    width: 100%;
+    text-align: center;
+    padding: 4px 0;
+    margin-bottom: 0;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-strip {
+    background: var(--pink);
+    overflow: hidden;
+    padding: 0.75rem 0;
+    border-top: 3px solid var(--black);
+    border-bottom: 3px solid var(--black);
+  }
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+  }
+  .marquee-track span {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    color: var(--white);
+    padding-right: 2rem;
+  }
+
+  /* ── WHY RAD ── */
+  .why-rad { background: var(--white); }
+  .section-header {
+    text-align: center; margin-bottom: 3.5rem;
+  }
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-top: 0.75rem;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .section-header h2 em {
+    font-style: normal; color: var(--pink);
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .pillar {
+    background: var(--cream);
+    border: 2px solid var(--black);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pillar:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0 var(--black);
+  }
+  .pillar-icon {
+    width: 56px; height: 56px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--black);
+  }
+  .pillar h3 {
+    font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem;
+  }
+  .pillar p { color: #555; font-size: 0.95rem; line-height: 1.6; }
+
+  /* ── PRODUCT TEASER ── */
+  .products-teaser { background: var(--cream); }
+  .teaser-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+  .teaser-card {
+    background: var(--white);
+    border: 2.5px solid var(--black);
+    border-radius: var(--radius);
+    padding: 2.5rem 2rem;
+    text-decoration: none; color: inherit;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .teaser-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 8px 8px 0 var(--black);
+  }
+  .teaser-stripe {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 8px;
+    background: var(--accent);
+  }
+  .teaser-emoji { font-size: 3rem; margin-bottom: 0.5rem; }
+  .teaser-card h3 {
+    font-family: var(--font-display);
+    font-size: 2rem; letter-spacing: 2px;
+    color: var(--accent);
+  }
+  .teaser-card p { color: #555; font-size: 0.95rem; line-height: 1.5; flex: 1; }
+  .teaser-cta {
+    font-weight: 800; font-size: 0.85rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--black); margin-top: 0.5rem;
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--black);
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .cta-bolts {
+    font-size: 8rem; opacity: 0.05;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    letter-spacing: 2rem;
+    white-space: nowrap;
+  }
+  .cta-band h2 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--white);
+    letter-spacing: 4px;
+    position: relative; z-index: 1;
+  }
+  .cta-band p {
+    color: #aaa; font-size: 1.1rem;
+    max-width: 520px; margin: 1rem auto 2.5rem;
+    line-height: 1.6; position: relative; z-index: 1;
+  }
+  .btn-yellow {
+    background: var(--yellow); color: var(--black);
+    font-weight: 900;
+    position: relative; z-index: 1;
+    font-size: 1.1rem; padding: 1rem 2.5rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    from { transform: translateY(0) rotate(-5deg); }
+    to   { transform: translateY(-20px) rotate(10deg); }
+  }
+  @keyframes float2 {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-12px); }
+  }
+  @keyframes pulse {
+    from { transform: scale(1); opacity: 0.2; }
+    to   { transform: scale(1.15); opacity: 0.35; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 900px) {
+    .hero { flex-direction: column; min-height: auto; padding: 3rem 1.5rem; text-align: center; }
+    .hero-content { margin-left: 0; padding-left: 0; }
+    .hero-actions { justify-content: center; }
+    .hero-badges { justify-content: center; }
+    .hero-jar-wrap { display: none; }
+  }
+</style>

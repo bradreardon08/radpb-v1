@@ -1,0 +1,333 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const products = [
+  {
+    id: 'creamy',
+    name: 'Creamy',
+    emoji: '🫙',
+    tagline: 'Silky. Classic. Iconic.',
+    desc: 'Our original RAD formula. Stone-ground peanuts slow-roasted to perfection, blended into a luxuriously smooth spread that needs absolutely nothing else. Just peanuts + sea salt.',
+    color: 'var(--pink)',
+    badges: ['All Natural', 'No Palm Oil', 'No Stir', 'Gluten Free'],
+    sizes: ['8 oz', '16 oz', '32 oz'],
+    price: 'From $7.99',
+    ingredients: 'Dry roasted peanuts, sea salt.',
+  },
+  {
+    id: 'crunchy',
+    name: 'Crunchy',
+    emoji: '🥜',
+    tagline: 'Chunk it up. Taste the difference.',
+    desc: 'All the goodness of Creamy, plus big, bold peanut pieces for serious texture. If Creamy is a smooth jazz song, Crunchy is the whole dang band playing at once.',
+    color: 'var(--cyan)',
+    badges: ['All Natural', 'No Palm Oil', 'No Stir', 'High Protein'],
+    sizes: ['8 oz', '16 oz', '32 oz'],
+    price: 'From $7.99',
+    ingredients: 'Dry roasted peanuts, sea salt.',
+  },
+  {
+    id: 'honey',
+    name: 'Honey',
+    emoji: '🍯',
+    tagline: 'Nature\'s perfect pair.',
+    desc: 'Raw wildflower honey meets our signature peanut butter. Naturally sweet, no refined sugar, totally irresistible. The only thing better than peanut butter is RAD peanut butter with honey.',
+    color: 'var(--yellow)',
+    badges: ['All Natural', 'No Palm Oil', 'No Stir', 'Raw Honey'],
+    sizes: ['8 oz', '16 oz'],
+    price: 'From $9.99',
+    ingredients: 'Dry roasted peanuts, raw wildflower honey, sea salt.',
+  },
+];
+---
+<Layout title="Products">
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="header-bolts" aria-hidden="true">
+      {Array.from({length: 20}).map((_, i) => (
+        <span style={`--i:${i}`}>⚡</span>
+      ))}
+    </div>
+    <div class="container">
+      <span class="tag">The Lineup</span>
+      <h1>Our Products</h1>
+      <p>Three varieties. Zero compromises. All RAD.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section products-section">
+    <div class="container">
+      {products.map((p, idx) => (
+        <div class="product-card" id={p.id} style={`--accent: ${p.color}`}>
+          <div class="product-visual">
+            <div class="product-jar">
+              <div class="pj-lid"></div>
+              <div class="pj-body">
+                <div class="pj-label">
+                  <div class="pj-pattern"></div>
+                  <div class="pj-name">{p.name.toUpperCase()}</div>
+                </div>
+                <div class="pj-fill"></div>
+              </div>
+            </div>
+            <div class="product-emoji-bg">{p.emoji}</div>
+          </div>
+          <div class="product-info">
+            <span class="tag">{p.tagline}</span>
+            <h2 class="product-name">{p.name}</h2>
+            <p class="product-desc">{p.desc}</p>
+            <div class="product-badges">
+              {p.badges.map(b => <span class="badge">{b}</span>)}
+            </div>
+            <div class="product-ingredients">
+              <strong>Ingredients:</strong> {p.ingredients}
+            </div>
+            <div class="product-sizes">
+              <strong>Available:</strong>
+              {p.sizes.map(s => <span class="size-chip">{s}</span>)}
+            </div>
+            <div class="product-footer">
+              <span class="product-price">{p.price}</span>
+              <a href="#" class="btn btn-pink">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="section variety-cta">
+    <div class="container">
+      <div class="variety-box">
+        <div class="variety-text">
+          <h2>Can't Choose?<br/>Get the <em>Variety Pack.</em></h2>
+          <p>One of each. Creamy, Crunchy, and Honey. The perfect way to go full RAD.</p>
+          <a href="#" class="btn btn-pink">Shop Variety Pack</a>
+        </div>
+        <div class="variety-emojis" aria-hidden="true">🫙🥜🍯</div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--black);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+    border-bottom: 4px solid var(--pink);
+  }
+  .header-bolts {
+    position: absolute; inset: 0;
+    pointer-events: none; overflow: hidden;
+  }
+  .header-bolts span {
+    position: absolute;
+    font-size: calc(1rem + var(--i) * 0.4rem);
+    opacity: 0.05;
+    left: calc(var(--i) * 5.5%);
+    top: calc((var(--i) * 7%) % 100%);
+    animation: spin calc(10s + var(--i) * 1s) linear infinite;
+  }
+  .page-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: var(--white);
+    letter-spacing: 4px;
+    line-height: 1;
+    margin: 0.5rem 0;
+    position: relative; z-index: 1;
+  }
+  .page-header p {
+    color: #aaa; font-size: 1.1rem;
+    position: relative; z-index: 1;
+  }
+  .page-header .tag { position: relative; z-index: 1; }
+
+  /* ── PRODUCT CARDS ── */
+  .products-section { background: var(--cream); }
+  .product-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 4rem 0;
+    border-bottom: 2px solid #e8e0d4;
+  }
+  .product-card:last-child { border-bottom: none; }
+  .product-card:nth-child(even) .product-visual { order: 2; }
+  .product-card:nth-child(even) .product-info  { order: 1; }
+
+  /* Visual side */
+  .product-visual {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 320px;
+  }
+  .product-emoji-bg {
+    font-size: 14rem;
+    opacity: 0.06;
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    filter: blur(2px);
+  }
+  .product-jar {
+    position: relative; z-index: 1;
+    animation: float2 4s ease-in-out infinite alternate;
+  }
+  .pj-lid {
+    width: 150px; height: 28px;
+    background: linear-gradient(180deg, #444, #222);
+    border-radius: 6px 6px 3px 3px;
+    margin: 0 auto;
+    border: 2px solid #555;
+  }
+  .pj-body {
+    width: 165px; height: 210px;
+    border: 2.5px solid rgba(255,255,255,0.2);
+    border-radius: 10px 10px 20px 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(4px);
+    position: relative; overflow: hidden;
+    margin-top: -3px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .pj-label {
+    position: absolute;
+    top: 14px; left: 8px; right: 8px;
+    height: 130px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pj-pattern {
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(45deg, var(--pink) 0, var(--pink) 3px, transparent 3px, transparent 10px),
+      repeating-linear-gradient(-45deg, var(--cyan) 0, var(--cyan) 3px, transparent 3px, transparent 10px),
+      var(--yellow);
+  }
+  .pj-name {
+    position: relative; z-index: 1;
+    font-family: var(--font-display);
+    font-size: 2rem; letter-spacing: 3px;
+    color: var(--accent);
+    -webkit-text-stroke: 1px var(--black);
+    background: var(--white);
+    padding: 2px 10px;
+    border-radius: 4px;
+    border: 2px solid var(--black);
+  }
+  .pj-fill {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 45%;
+    background: linear-gradient(180deg, var(--pb) 0%, var(--pb-dark) 100%);
+    border-radius: 0 0 18px 18px;
+  }
+
+  /* Info side */
+  .product-name {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    letter-spacing: 3px;
+    color: var(--accent);
+    line-height: 1;
+    margin: 0.5rem 0 1rem;
+  }
+  .product-desc {
+    color: #444; line-height: 1.7; font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .product-badges {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .badge {
+    background: var(--accent);
+    color: var(--black);
+    font-size: 0.75rem; font-weight: 800;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    border: 1.5px solid var(--black);
+  }
+  .product-ingredients {
+    font-size: 0.85rem; color: #666;
+    margin-bottom: 1rem; line-height: 1.5;
+  }
+  .product-sizes {
+    display: flex; align-items: center; gap: 0.5rem;
+    flex-wrap: wrap; margin-bottom: 1.5rem;
+    font-size: 0.9rem; color: #444; font-weight: 600;
+  }
+  .size-chip {
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: 6px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.8rem; font-weight: 700;
+  }
+  .product-footer {
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .product-price {
+    font-family: var(--font-display);
+    font-size: 2rem; letter-spacing: 1px;
+    color: var(--black);
+  }
+
+  /* ── VARIETY CTA ── */
+  .variety-cta { background: var(--white); }
+  .variety-box {
+    background: var(--black);
+    border-radius: var(--radius);
+    border: 3px solid var(--black);
+    padding: 4rem;
+    display: flex;
+    align-items: center; justify-content: space-between;
+    gap: 2rem;
+    overflow: hidden;
+  }
+  .variety-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: var(--white);
+    letter-spacing: 2px; line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .variety-text h2 em { font-style: normal; color: var(--yellow); }
+  .variety-text p { color: #aaa; margin-bottom: 1.5rem; line-height: 1.6; }
+  .variety-emojis {
+    font-size: 6rem; line-height: 1;
+    white-space: nowrap;
+    filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
+  }
+
+  @keyframes float2 {
+    from { transform: translateY(0); }
+    to   { transform: translateY(-10px); }
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  @media (max-width: 800px) {
+    .product-card {
+      grid-template-columns: 1fr;
+      padding: 3rem 0;
+    }
+    .product-card:nth-child(even) .product-visual,
+    .product-card:nth-child(even) .product-info  { order: unset; }
+    .product-visual { min-height: 200px; }
+    .product-emoji-bg { font-size: 8rem; }
+    .variety-box { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+    .variety-emojis { font-size: 4rem; }
+  }
+</style>

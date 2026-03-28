@@ -1,0 +1,228 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "RAD Peanut Butter — All Natural & Delicious. No Palm Oil. No Stir. Just RAD." } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | RAD Peanut Butter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <a href="/" class="nav-logo">RAD<span>PB</span></a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <a href="/products" class="nav-cta">Shop Now</a>
+    <button class="nav-hamburger" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">RAD<em>PB</em></span>
+        <p>All natural. No palm oil. No stir. Just RAD.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="footer-badges">
+        <span>🥜 All Natural</span>
+        <span>🌿 No Palm Oil</span>
+        <span>✋ No Stir</span>
+      </div>
+    </div>
+    <p class="footer-copy">&copy; 2025 RAD Peanut Butter. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --pink:    #E8187A;
+    --cyan:    #00C4CC;
+    --yellow:  #F5D800;
+    --black:   #111111;
+    --white:   #FAFAFA;
+    --cream:   #FFF8EE;
+    --pb:      #C47A2B;
+    --pb-dark: #8B5010;
+
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body:    'Nunito', sans-serif;
+
+    --radius: 12px;
+    --max-w:  1200px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; gap: 2rem;
+    padding: 0 2rem;
+    height: 64px;
+    background: var(--black);
+    border-bottom: 3px solid var(--pink);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 2px;
+    flex-shrink: 0;
+  }
+  .nav-logo span { color: var(--pink); }
+  .nav-links {
+    list-style: none;
+    display: flex; gap: 2rem;
+    margin-left: auto;
+  }
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-cta {
+    background: var(--pink);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+  .nav-cta:hover { background: var(--cyan); transform: scale(1.04); }
+  .nav-hamburger {
+    display: none;
+    background: none; border: none;
+    color: var(--white); font-size: 1.5rem;
+    cursor: pointer; margin-left: auto;
+  }
+
+  @media (max-width: 680px) {
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: block; }
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 3rem 2rem 1.5rem;
+    border-top: 4px solid var(--yellow);
+  }
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #333;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--white);
+  }
+  .footer-logo em { color: var(--pink); font-style: normal; }
+  .footer-brand p { color: #aaa; margin-top: 0.5rem; font-size: 0.9rem; }
+  .footer-links {
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .footer-links a {
+    color: #ccc; text-decoration: none; font-weight: 600;
+    text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--cyan); }
+  .footer-badges {
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .footer-badges span {
+    font-size: 0.85rem; color: #ccc; font-weight: 600;
+  }
+  .footer-copy {
+    text-align: center; margin-top: 1.5rem;
+    font-size: 0.8rem; color: #555;
+  }
+  @media (max-width: 680px) {
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+
+  /* ── UTILITIES ── */
+  .section { padding: 5rem 2rem; }
+  .container { max-width: var(--max-w); margin: 0 auto; }
+  .tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+  .btn-pink  { background: var(--pink);   color: var(--white); }
+  .btn-cyan  { background: var(--cyan);   color: var(--black); }
+  .btn-black { background: var(--black);  color: var(--white); }
+  .btn-outline {
+    background: transparent;
+    color: var(--black);
+    border: 2.5px solid var(--black);
+  }
+  .btn-outline:hover { background: var(--black); color: var(--white); }
+</style>
