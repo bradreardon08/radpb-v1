@@ -1,3 +1,6 @@
 name = "radpb_v1"
 compatibility_date = "2024-04-03"
 pages_build_output_dir = "dist"
+
+[assets]
+binding = "STATIC_ASSETS"
