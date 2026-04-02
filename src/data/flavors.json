@@ -1,0 +1,58 @@
+[
+  {
+    "id": "pure",
+    "name": "Pure",
+    "description": "Just high-quality roasted peanuts. No distractions.",
+    "image": "/images/pure.png",
+    "color": "#4dff00"
+  },
+  {
+    "id": "simple",
+    "name": "Simple",
+    "description": "The perfect balance of nuts and a hint of sea salt.",
+    "image": "/images/simple.png",
+    "color": "#57C6D0"
+  },
+  {
+    "id": "creamy",
+    "name": "Creamy",
+    "description": "Velvety smooth texture that melts in your mouth.",
+    "image": "/images/creamy.png",
+    "color": "#E83A92"
+  },
+  {
+    "id": "crunchy",
+    "name": "Crunchy",
+    "description": "Packed with massive chunks for the ultimate bite.",
+    "image": "/images/crunchy.png",
+    "color": "#2766B1"
+  },
+  {
+    "id": "cinnamon",
+    "name": "Cinnamon",
+    "description": "Warm, woody spice meets roasted peanut perfection.",
+    "image": "/images/cinnamon.png",
+    "color": "#ED8522"
+  },
+  {
+    "id": "salted",
+    "name": "Salted",
+    "description": "Bold savory notes for the serious peanut lover.",
+    "image": "/images/salted.png",
+    "color": "#D6E265"
+  },
+  {
+    "id": "crunchy-cinnamon",
+    "name": ["Crunchy", "Cinnamon"],
+    "description": "Double the texture, double the spice.",
+    "image": "/images/crunchy_cinnamon.png",
+    "colors": ["#2766B1", "#ED8522"]
+  },
+  {
+    "id": "crunchy-salted",
+    "name": ["Crunchy", "Salted"],
+    "description": "The ultimate crunch with a heavy hit of sea salt.",
+    "image": "/images/crunchy_salted.png",
+    "colors": ["#2766B1", "#D6E265"]
+  }
+]
