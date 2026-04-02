@@ -7,12 +7,37 @@ import '../styles/global.css';
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<title>RAD Peanut Butter | Idaho Made</title>
-		<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@700;900&family=Kanit:wght@800;900&display=swap" rel="stylesheet">
+		<title>RAD Peanut Butter</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+      .flavorTag {
+          -webkit-text-stroke: 4px #000000; 
+          paint-order: stroke fill;
+          
+          filter: 
+              drop-shadow(1px 1px 0px #000) 
+              drop-shadow(2px 2px 0px #000) 
+              drop-shadow(1px 0 0 #4dff00) 
+              drop-shadow(-2px 0 0 #4dff00) 
+              drop-shadow(0 2px 0 #4dff00) 
+              drop-shadow(0 -2px 0 #4dff00)
+              drop-shadow(1px 1px 0 #4dff00);
+
+          @media (min-width: 768px) {
+              filter: 
+                drop-shadow(1px 1px 0px #000) 
+                drop-shadow(2px 2px 0px #000) 
+                drop-shadow(3px 3px 0px #000) 
+                drop-shadow(4px 4px 0px #000) 
+                drop-shadow(1px 0 0 #4dff00) 
+                drop-shadow(-2px 0 0 #4dff00) 
+                drop-shadow(0 2px 0 #4dff00) 
+                drop-shadow(0 -2px 0 #4dff00)
+                drop-shadow(1px 1px 0 #4dff00);
+          }
+      }
+    </style>
 	</head>
 	<body class="bg-[#0a0a0a] text-white font-['Inter'] overflow-x-hidden">
 		
@@ -40,44 +65,18 @@ import '../styles/global.css';
 						<h2 class="font-['Inter'] font-black text-5xl md:text-8xl uppercase mb-4 tracking-tighter leading-none flex flex-wrap gap-x-4">
               {Array.isArray(flavor.name) ? (
                   flavor.name.map((word, index) => (
-                      <span 
+                      <span class="flavorTag"
                           style={`
                               color: ${flavor.colors[index]}; 
-                              -webkit-text-stroke: 4px #000000; 
-                              paint-order: stroke fill;
-                              
-                              filter: 
-                                  drop-shadow(1px 1px 0px #000) 
-                                  drop-shadow(2px 2px 0px #000) 
-                                  drop-shadow(3px 3px 0px #000) 
-                                  drop-shadow(4px 4px 0px #000) 
-                                  drop-shadow(1px 0 0 #4dff00) 
-                                  drop-shadow(-2px 0 0 #4dff00) 
-                                  drop-shadow(0 2px 0 #4dff00) 
-                                  drop-shadow(0 -2px 0 #4dff00)
-                                  drop-shadow(1px 1px 0 #4dff00);
                           `}
                       >
                           {word}
                       </span>
                   ))
               ) : (
-                  <span 
+                  <span class="flavorTag"
                       style={`
                           color: ${flavor.color}; 
-                          -webkit-text-stroke: 4px #000000; 
-                          paint-order: stroke fill;
-                          
-                          filter: 
-                              drop-shadow(1px 1px 0px #000) 
-                              drop-shadow(2px 2px 0px #000) 
-                              drop-shadow(3px 3px 0px #000) 
-                              drop-shadow(4px 4px 0px #000) 
-                              drop-shadow(1px 0 0 #4dff00) 
-                              drop-shadow(-2px 0 0 #4dff00) 
-                              drop-shadow(0 2px 0 #4dff00) 
-                              drop-shadow(0 -2px 0 #4dff00)
-                              drop-shadow(1px 1px 0 #4dff00);
                       `}
                   >
                       {flavor.name}
