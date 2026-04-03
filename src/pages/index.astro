@@ -9,7 +9,7 @@ import '../styles/global.css';
 		<meta name="viewport" content="width=device-width" />
 		<title>RAD Peanut Butter</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
       .flavorTag {
           -webkit-text-stroke: 4px #000000; 
@@ -37,16 +37,25 @@ import '../styles/global.css';
                 drop-shadow(1px 1px 0 #4dff00);
           }
       }
+
+      .squiggle {
+        position: relative;
+      }
+      .squiggle:after {
+        content: url('/images/squiggle.png');
+        position: absolute;
+        left: calc(50% - 65px);
+        bottom: -25px;
+      }
     </style>
 	</head>
-	<body class="bg-[#0a0a0a] text-white font-['Inter'] overflow-x-hidden">
+	<body class="bg-[#0a0a0a] text-white font-['Montserrat'] overflow-x-hidden">
 		
 		<section class="h-screen flex flex-col justify-center items-center text-center p-6 border-b-8 border-[#4dff00]">
-			<h1 class="font-['Inter'] font-black text-7xl md:text-[12rem] mb-4 tracking-tighter text-[#E83A92]">
-				RAD
+			<h1 class="font-['Montserrat'] font-black text-7xl md:text-[12rem] mb-4 tracking-tighter text-[#E83A92]">
+				<img src="/images/rad_logo.png"/>
 			</h1>
-			<p class="font-['Inter'] font-black text-xl md:text-4xl font-bold uppercase tracking-[0.3em] text-[#4dff00]">Peanut Butter</p>
-			<div class="mt-16 px-8 py-4 bg-[#4dff00] text-black font-black uppercase tracking-tighter transform -rotate-2">
+			<div class="squiggle mt-16 px-8 py-4 bg-[#4dff00] text-black font-black uppercase tracking-tighter">
 				Store Opening Soon
 			</div>
 		</section>
@@ -62,7 +71,7 @@ import '../styles/global.css';
 						/>
 					</div>
 					<div class="w-full md:w-2/5 p-8 md:p-20 flex flex-col justify-center">
-						<h2 class="font-['Inter'] font-black text-5xl md:text-8xl uppercase mb-4 tracking-tighter leading-none flex flex-wrap gap-x-4">
+						<h2 class="font-['Montserrat'] font-black text-5xl md:text-8xl uppercase mb-4 tracking-tighter leading-none flex flex-wrap gap-x-4">
               {Array.isArray(flavor.name) ? (
                   flavor.name.map((word, index) => (
                       <span class="flavorTag"
@@ -92,7 +101,7 @@ import '../styles/global.css';
 		</main>
 
 		<footer class="p-12 text-center border-t-4 border-[#FF007F]">
-			<p class="font-['Inter'] font-black text-2xl text-[#00FFFF]">Be RAD.</p>
+			<p class="font-['Montserrat'] font-black text-2xl text-[#00FFFF]">Be RAD.</p>
 			<p class="mt-2 text-sm text-gray-500 uppercase tracking-widest">© 2026 RAD Foods, LLC</p>
 		</footer>
 
